@@ -6,13 +6,21 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 // Provider allows us to use redux within our react app
 import { Provider } from 'react-redux';
+import { takeEvery, put } from "redux-saga/effects";
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+import Axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
+    yield takeEvery('FETCH_MOVIES', getMovies);
+}
 
+function* getMovies(){
+    const showMovie = yield Axios.get('/display');
+    console.log('this saga came from display /GET: ', showMovie.data)
+    yield put({type: 'SET_MOVIES', payload: showMovie.data})
 }
 
 // Create sagaMiddleware
