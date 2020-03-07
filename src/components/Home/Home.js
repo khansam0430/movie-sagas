@@ -20,9 +20,10 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-         <ul>
-            {this.props.reduxState.movies.map(flick => (<li key={flick.id}>{flick.title}
-                <img src={flick.poster} alt={flick.title}></img>
+          {/* display movies by looping through db and mapping through movies reducer */}
+         <ul> 
+            {this.props.reduxState.movies.map(flick => (<li key={flick.id}>
+                <img src={flick.poster} alt={flick.title}></img> <br/>{flick.title} <br/>{flick.description}
                 </li>))}
                 </ul>
       </div>
