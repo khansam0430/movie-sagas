@@ -6,7 +6,9 @@ const router = express.Router();
 // returns movies with descriptions from db
 router.get('/', (req, res) => {
   console.log("in server display router- GET");
-  const queryText = `SELECT * FROM movies ORDER BY title ASC`;
+  const queryText = `SELECT * FROM "movies" JOIN "movies_genres" 
+  ON "movies"."id" = "movies_genres"."movies_id" 
+  JOIN "genres" ON "genres"."id" = "movies_genres"."genres_id" ORDER BY "movies"."id";`;
   pool.query(queryText)
       .then( (result) => {
           res.send(result.rows);

@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 
 // import swal from 'sweetalert';
 
-// import Favorite from '../Favorite/Favorite';
-
 class Home extends Component {
     componentDidMount = () => {
         this.getMovies();
@@ -15,8 +13,8 @@ class Home extends Component {
         this.props.dispatch({ type: "FETCH_MOVIES" });
       };
 
-      onClick = (event, flick) => {
-        //console.log('in imageClick');
+      onClick = (flick) => {
+        console.log('in imageClick from home', flick);
         this.props.history.push({
             pathname: '/details',
             state: {
@@ -33,13 +31,14 @@ class Home extends Component {
     return (
       <div className="App">
           {/* display movies by looping through db and mapping through movies reducer */}
+          {this.props.reduxState.movies && (
          <ul> 
             {this.props.reduxState.movies.map(flick => (<li key={flick.id}>
-                <img src={flick.poster} alt={flick.title} onClick={(event) => this.onClick(event, flick)}></img> 
+                <img src={flick.poster} alt={flick.title} onClick={() => this.onClick(flick)}></img> 
                 <br/>{flick.title} <br/>{flick.description}
                 </li>))}
         </ul>
-       
+          )}
       </div>
     );
   }

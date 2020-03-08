@@ -16,7 +16,7 @@ import Axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', getMovies);
     yield takeEvery('EDIT_MOVIES', editMovies);
-    yield takeEvery('SHOW_GENRES', showGenres);
+    // yield takeEvery('SHOW_GENRES', showGenres);
     
 }
 
@@ -30,17 +30,17 @@ function* editMovies(edit){
     console.log('hi from editMovies in index: ', edit.payload);
   try {
     yield Axios.put(`/edit/${edit.payload.sendId}`, edit.payload);
-    yield put({type: 'GET_MOVIES'});
+    yield put({type: 'FETCH_MOVIES'});
   } catch (error) {
-    console.log(error);
+    console.log('error fetching movies', error);
   }
 }
 
-function* showGenres(){
-    const genres = yield Axios.get('/edit');
-    console.log('show genres saga from index: ', genres.data)
-    yield put({type: 'SET_GENRES', payload: genres.data})
-}
+// function* showGenres(){
+//     const genres = yield Axios.get('/edit');
+//     console.log('show genres saga from index: ', genres.data)
+//     yield put({type: 'SET_GENRES', payload: genres.data})
+// }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
