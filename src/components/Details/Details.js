@@ -7,17 +7,19 @@ class Details extends Component {
         console.log('go back home from details page');
         this.props.history.push('/')
     }
-
-    editMovie = flick => {
-    this.props.history.push({
-      pathname: "/edit",
-      state: {
-        id: flick.id,
-        title: flick.title,
-        poster: flick.poster,
-        description: flick.description
-      }
-    });
+//sending props to /edit with history.push
+    editMovie = (event) => {
+        console.log('in editBtn');
+        this.props.history.push({
+            pathname: '/edit',
+            state: {
+                id: event.id,
+                title: event.title,
+                poster: event.poster,
+                description: event.description,
+                genre: event.genre
+            }
+        });
     };
 
     render() {
@@ -29,6 +31,7 @@ class Details extends Component {
             <div className="movieDisplay" key={this.props.location.state.id}>
                 <img src={this.props.location.state.poster} alt={this.props.location.state.poster}></img>
             </div>
+            <p><b>{this.props.location.state.genre}</b></p>
             <p>{this.props.location.state.description}</p>
             <button onClick={this.back}>Back to Movie List</button>
             <button onClick={() => this.editMovie(this.props.location.state)}>Edit</button>

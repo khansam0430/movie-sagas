@@ -8,7 +8,7 @@ class Home extends Component {
     componentDidMount = () => {
         this.getMovies();
       };
-    
+    //dispatching to fetch movies saga
       getMovies = () => {
         this.props.dispatch({ type: "FETCH_MOVIES" });
       };
@@ -21,7 +21,8 @@ class Home extends Component {
                 id: flick.id,
                 title: flick.title,
                 poster: flick.poster,
-                description: flick.description
+                description: flick.description,
+                genre: flick.name
             }
         });
     };
