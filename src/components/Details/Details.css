@@ -1,0 +1,26 @@
+  
+body{
+background-color: #2E2E3A;
+color: rgb(128, 172, 238);
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.movieDisplay{
+    display: inline-grid;
+    grid-template-columns: 300px, 300px;
+    grid-column-gap: 10px;
+    grid-row-gap: 30px;
+    align-content: center;
+    width: fit-content;
+    height:fit-content;
+    padding-left: 30px;
+}
+
+button {
+padding: 5px;
+margin-left:10px;
+font-weight: 600;
+font-size: large;
+color: teal;
+}
