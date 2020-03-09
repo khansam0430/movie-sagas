@@ -7,12 +7,14 @@ import {connect} from 'react-redux';
 class Home extends Component {
     componentDidMount = () => {
         this.getMovies();
+        
       };
     //dispatching to fetch movies saga
       getMovies = () => {
         this.props.dispatch({ type: "FETCH_MOVIES" });
       };
 
+//on click this function passes props to details page and pushes user to /details
       onClick = (flick) => {
         console.log('in imageClick from home', flick);
         this.props.history.push({
@@ -31,15 +33,15 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-          {/* display movies by looping through db and mapping through movies reducer */}
-          {this.props.reduxState.movies && (
-         <ul> 
-            {this.props.reduxState.movies.map(flick => (<li key={flick.id}>
+          {/* display movies on dom by mapping (loop) through db and mapping through movies reducer */}
+          
+         
+            {this.props.reduxState.movies.map(flick => (<p key={flick.id}>
                 <img src={flick.poster} alt={flick.title} onClick={() => this.onClick(flick)}></img> 
                 <br/>{flick.title} <br/>{flick.description}
-                </li>))}
-        </ul>
-          )}
+                </p>))}
+        
+          
       </div>
     );
   }
