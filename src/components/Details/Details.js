@@ -8,10 +8,6 @@ class Details extends Component {
         this.props.history.push('/')
     }
 
-    // showGenres=(movieId)=>{
-    //     this.props.dispatch({type: 'GET_GENRES', payload:movieId})
-    // }
-
 
 //sending props to /edit with history.push
     editMovie = (event) => {
@@ -39,11 +35,10 @@ class Details extends Component {
             <div className="movieDisplay" key={this.props.location.state.id}>
                 <img src={this.props.location.state.poster} alt='poster'></img>
             </div>
-            <p><b>Movie Genre: {this.props.location.state.genre}</b></p>
+            <p><b>{this.props.location.state.genre}</b></p>
             <p>{this.props.location.state.description}</p>
             <button onClick={this.back}>Back to Movie List</button>
             <button onClick={() => this.editMovie(this.props.location.state)}>Edit</button>
-            
         
         </div>
         );

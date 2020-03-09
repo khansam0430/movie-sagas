@@ -35,9 +35,10 @@ function* editMovies(edit){
   }
 }
 
-function* getGenres(action){
-    const response = yield Axios.get(`/display/genres/${action.payload}`);
-     yield put({type: 'SET_GENRES', payload: response.data})
+function* getGenres(id) {
+  const showGenre = yield Axios.get(`/display/${id}/genres`);
+  console.log("this saga came from display/GET bringing: ", showGenre.data);
+  yield put({ type: "SET_MOVIES", payload: showGenre.data });
 }
 
 // Create sagaMiddleware

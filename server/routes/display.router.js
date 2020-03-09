@@ -21,20 +21,21 @@ router.get('/', (req, res) => {
       });
 });
 
-//movies_genres get route to db
-// router.get('/genres/:id', (req, res) => {
-//     console.log('in /genres/id get in display router');
-//     let queryString = `SELECT * FROM "movies_genres"
-//     JOIN "genres" ON "genres"."id" = "movies_genres"."genres_id"
-//     JOIN "movies" ON "movies"."id" = "movies_genres"."movies_id"
-//     WHERE "movies"."id" = $1;`; 
-//     pool.query(queryString, [req.params.id])
-//     .then((results) => {
-//         res.send(results.rows);
-//     }).catch((err) => {
-//         console.log(err);
-//         res.sendStatus(500);
-//     })
-// });
+// movies_genres get route to db
+router.get('/:movie_id/genres', (req, res) => {
+    console.log("in server/:movie_id/genres GET", req.params.movie_id);
+    const queryText = `select * from "genres"
+  join "movies_genres" on "genres"."id" = "movies_genres"."genres_id"
+  where "movies_genres"."movies_id" =${req.params.movies.id};`;
+   pool.query(queryText)
+    .then(result => {
+          res.send(result.rows);
+    })
+    .catch(error => {
+      console.log('Error getting query', error);
+      res.sendStatus(500);
+    });
+
+})
 
 module.exports = router;
