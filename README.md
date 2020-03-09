@@ -1,9 +1,9 @@
 # Project Name
 
-Saga Movies Page
+Movies Saga App
 
 ## Description
-This project is a Feedback app which allows users to input their feedback. This app will open up to a feedback "home" page and has buttons to fill out the form. There are 4 components to this form which ask different questions and give the ability to go back to the previous question if desired to update their answer. The user also has capability to enter in comments as well. This app also has a review page in which users can review the information they have entered prior to submitting their feedback into the SQL Feedback Database. The submission page gives a confirmation that their code has been submitted and offers a button to leave new feedback-which loops back to the first page. Material UI has been incorporated in the buttons for aesthetic purposes as well.
+The Movie Sagas application is a movie application that displays existing movies within an SQL database. This app gives you the option to select a movie by clicking on it's image and takes you to a details page. From that page, you have the option to edit title and description of the movie as you wish. Once you click the edit button, you will be taken to the corresponding movies' edit page. There you will have the option to update title and description. After changes are made, you will be redirected to the homepage and the changes will appear via your database (sql). If you decide to cancel your changes while on the edits page, it will redirect you back to the details page of that move. Have fun browsing!
 
 ## Languages and Software Used 
 <li>React</li> 
